@@ -13,3 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+# For Sphinx
+/db/sphinx/development/*
+config/development.sphinx.conf
+/log/*

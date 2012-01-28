@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Miracle</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="welcome">
+  <div class="topbar">
+    <div class="global-nav">
+      <div class="global-nav-inner">
+        <div class="container">
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%>
+  <div id="sign-in-container">
+    <div id="sign-in-logo">
+      <%= image_tag "/assets/socialite.png" %>
+    </div>
+    <p><a class="btn-auth btn-github large" href="/login">Sign in with <b>GitHub</b></a></p>
+  </div>
+</body>
+</html>

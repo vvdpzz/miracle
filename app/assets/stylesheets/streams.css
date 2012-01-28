@@ -1,0 +1,145 @@
+/* --------------------------------------------------
+
+Link color
+- From base.css
+- From patterns.css
+- From cards.css
+Icon background color
+Background image
+
+*/
+
+/*
+Standard Base Styles:
+- Twitter blue link color: #0084B4;
+- Twitter bluegradient background:
+*/
+
+/* Link Color
+-------------------------------------------------- */
+/* From base.css
+------------------------- */
+a,
+/* From patterns.css
+------------------------- */
+/* Pretty links */
+
+/* colon_hover will become ":hover" or "" depending on has_hovers_in_css */
+/* has_hovers_in_css is true unless running in IE7 or ?hovers=0 */
+
+.pretty-link:hover s,
+.pretty-link:hover b,
+/* Metadata */
+.metadata a:hover,
+/* Account Group */
+.account-group:hover .fullname,
+/* Stats */
+.stats a:hover,
+.stats a:hover strong,
+/* Profile modal */
+.profile-modal-header .fullname a:hover,
+.profile-modal-header .username a:hover,
+/* Discovery Attribution */
+.story-article:hover .metadata,
+/* Find friends sources */
+.find-friends-sources li:hover .source,
+
+/* From streams.css
+------------------------- */
+/* Basic Stream Item */
+.stream-item a:hover .fullname,
+.stream-item .time a:hover,
+/* Activity-related Stream Item */
+.stream-item .view-all-supplements:hover,
+/* Tweets */
+.tweet .details,
+.tweet .content-expansion a:hover,
+.tweet p a:hover,
+.tweet:hover .action-open-container a,
+/* Client & actions */
+.client-and-actions a:hover,
+/* Promoted link */
+.dismiss-promoted:hover b,
+/* Tweet Context */
+.tweet .context .pretty-link:hover s,
+.tweet .context .pretty-link:hover b,
+/* Lists */
+.list .username a:hover,
+.list-membership-container .create-a-list,
+.list-membership-container .create-a-list:hover,
+/* Permalink */
+.permalink-tweet p a,
+.permalink-tweet .actions a,
+.tweet .actions li:hover b,
+.open .tweet p a,
+.open .original-tweet .action-open-container a,
+.open .original-tweet .actions b,
+
+/* From cards.css
+------------------------- */
+.story-header:hover .view-tweets,
+.card .list-details a:hover,
+.card .card-body:hover .attribution,
+.new-tweets-bar,
+
+/* From settings.css
+------------------------- */
+.remove-background-btn,
+
+/* From activity.css
+------------------------- */
+.stream-item-activity-me .latest-tweet .tweet-row a:hover,
+
+/* From streams.css for tweet experiments (ddg experiment t1_actions_156)
+------------------------- */
+.colored-actions.tweet .actions a,
+.colored-links.tweet p a {
+
+  color: #0084B4;
+
+
+}
+
+
+/* Icon background color
+-------------------------------------------------- */
+/* General icons active states */
+.tweet .details .sm-reply,
+.tweet .details .sm-image,
+.tweet .details .sm-video,
+.tweet .details .sm-audio,
+.tweet .details .sm-geo,
+.tweet .details .sm-embed,
+/* Tweet action active states */
+
+.with-icn:hover .action-reply,
+.with-icn:hover .action-rt,
+.with-icn:hover .action-fav,
+.with-icn:hover .action-del,
+
+
+.open .original-tweet .actions i,
+/* Permalink actions */
+.permalink-tweet .actions .action-reply,
+.permalink-tweet .actions .action-rt,
+.permalink-tweet .actions .action-fav,
+.permalink-tweet .actions .action-del,
+/* Change the background color of the search icon for #hastags */
+.story-header:hover .sm-search,
+
+/* From streams.css for tweet experiments (ddg experiment t1_actions_156)
+------------------------- */
+.colored-actions .with-icn .action-reply,
+.colored-actions .with-icn .action-rt,
+.colored-actions .with-icn .action-fav,
+.colored-actions .with-icn .action-del {
+  background-color: #0084B4; 
+}
+body {
+  background-image: url(/assets/bg.png);
+  background-position: left 40px;
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-color: #C0DEED;
+}

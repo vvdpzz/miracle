@@ -7,6 +7,30 @@ gem 'rails', '3.2.1'
 
 gem 'mysql2'
 
+# OAuth
+gem 'omniauth', '>= 1.0.2'
+gem 'omniauth-github'
+
+# APIs
+gem 'octokit'
+
+# twitter text processor
+gem 'twitter-text'
+
+# redis
+gem 'hiredis'
+gem 'redis', :require => ["redis/connection/hiredis", "redis"]
+gem 'redis-namespace'
+gem 'redis-objects'
+
+# resque
+gem 'resque'
+
+# Sphinx for real time search
+gem 'thinking-sphinx', '2.0.11'
+
+# template
+gem 'ejs'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +50,7 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the web server
 # gem 'unicorn'

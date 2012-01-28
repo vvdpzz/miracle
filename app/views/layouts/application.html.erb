@@ -7,8 +7,62 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="topbar">
+    <div class="global-nav">
+      <div class="global-nav-inner">
+        <div class="container">
+          <ul class="nav" id="global-actions">
+            <li id="global-nav-home" class="home" data-global-action="home">
+              <a href="/#!" data-component-term="home_nav">
+                <span class="new-wrapper"><i class="nav-home"></i><i class="nav-new"></i></span> Home
+              </a>
+            </li>
+            <li class="people" data-global-action="connect">
+              <a href="/#!/i/connect" data-component-term="connect_nav">
+                <span class="new-wrapper"><i class="nav-people"></i><i class="nav-new"></i></span> Connect
+              </a>
+            </li>
+            <li class="topics" data-global-action="discover">
+              <a href="/#!/i/discover" data-component-term="discover_nav">
+                <span class="new-wrapper"><i class="nav-topics"></i><i class="nav-new"></i></span> Discover
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="doc">
+    <div id="page-outer">
+      <div id="page-container" class="wrapper">
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+        <%- end -%>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <div class="twttr-dialog-wrapper"></div>
+  <script type="text/javascript" charset="utf-8">
+    var option = {
+      pastMask: '%yyyy %mmm %d',
+      masks: [{
+        distance: 43200,
+        mask: '%h:%MM %tt'
+      },{
+        distance: 31556926,
+        mask: '%mmm %d'
+      }]
+    };
+    App.current_user = {
+      id: "<%= current_user.id %>",
+      nickname: "<%= current_user.nickname %>",
+      name: "<%= current_user.name %>",
+      avatar_url: "<%= current_user.avatar_url %>",
+      posts_count: "<%= current_user.posts_count %>",
+      followers_count: "<%= current_user.followers_count %>",
+      friends_count: "<%= current_user.friends_count %>"
+    };
+  </script>
 </body>
 </html>

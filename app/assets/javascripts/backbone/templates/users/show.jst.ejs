@@ -1,0 +1,26 @@
+<div class="module profile-card component" data-component-term="profile_follow_card">
+  <div class="flex-module clearfix ">
+    <a href="<%= avatar_url %>&s=128" class="profile-picture" target="_blank">
+      <img src="<%= avatar_url %>&s=128" alt="<%= name %>" class="avatar size128">
+    </a>
+    <div class="profile-card-inner" data-screen-name="<%= nickname %>" data-user-id="<%= id %>">
+      <h1 class="fullname"><%= name %></h1>
+      <h2 class="username"><span><span class="screen-name"><s>@</s><%= nickname %></span></span></h2>
+      <p class="bio"><%= bio %></p>
+      <p class="location-and-url">
+        <span class="location"><%= location %></span>
+        <span class="url"><a target="_blank" rel="me nofollow" href="<%= html_url %>"><%= html_url %></a></span>
+      </p>
+    </div>
+    <div class="profile-card-actions">
+      <div class="follow-btn-container">
+        <a class="btn" href="/settings/profile">Edit your profile</a>
+      </div>
+      <ul class="stats">
+        <li><a href="/#!/<%= nickname %>"><strong><%= posts_count %></strong> Posts</a></li>
+        <li><a href="/#!/following"><strong><%= friends_count %></strong> Following</a></li>
+        <li><a href="/#!/followers"><strong><%= followers_count %></strong> Followers</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

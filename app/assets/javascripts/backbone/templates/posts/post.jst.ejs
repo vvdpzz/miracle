@@ -1,0 +1,56 @@
+<div class="expansion-container">
+  <% if(user_id != App.current_user.id){ %>
+  <div class="tweet original-tweet colored-actions colored-links">
+  <% }else{ %>
+  <div class="tweet original-tweet my-tweet colored-actions colored-links">
+  <% } %>
+    <div class="content">
+      <div class="stream-item-header">
+        <a class="account-group">
+          <img class="avatar" src="<%= avatar_url %>&s=48" alt="<%= name %>">
+          <strong class="fullname"><%= name %></strong>
+          <span class="username"><s>@</s><b><%= nickname %></b></span>
+        </a>
+        <small class="time">
+          <a href="" class="tweet-timestamp" title="<%= created_at %>"><time class="datetime" datetime="<%= created_at %>"></time></a>
+        </small>
+        <ul class="actions">
+          <li class="action-reply-container">
+            <a class="with-icn" data-modal="tweet-reply" href="#" title="Reply">
+              <i class="action-reply"></i>
+              <b>Reply</b>
+            </a>
+          </li>
+          <li class="action-rt-container">
+            <a class="with-icn" data-modal="tweet-retweet" href="#">
+              <i class="action-rt"></i>
+              <b><span class="undo-retweet" title="Undo repost">Retweeted</span><span class="retweet" title="Repost">Repost</span></b>
+            </a>
+          </li>
+          <li class="action-del-container">
+            <a class="with-icn" href="#" title="Delete">
+              <i class="action-del"></i>
+              <b>Delete</b>
+            </a>
+          </li>
+          <li class="action-fav-container">
+            <a class="with-icn" href="#">
+              <i class="action-fav"></i>
+
+              <b><span class="unfavorite" title="Undo favorite">Favorited</span><span class="favorite" title="Favorite">Favorite</span></b>
+            </a>
+          </li>
+          <li class="action-open-container">
+            <span class="separator">·</span>
+            <a class="with-icn" href="/#!/<%= nickname %>/posts/<%= id %>">
+              <span class="close-tweet" title="Close Post"> Close</span>
+              <span class="open-tweet" title="Open Post"> Open</span>
+              <span class="details-tweet" title="View Post details"> Details</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <p class="tweet-text"><%= text %></p>
+    </div>
+  </div>
+</div>

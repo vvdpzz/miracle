@@ -1,0 +1,10 @@
+defaults: &defaults
+  bin_path: '/usr/local/sphinx/bin'
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults

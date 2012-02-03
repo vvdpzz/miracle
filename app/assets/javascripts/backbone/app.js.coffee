@@ -9,8 +9,3 @@ window.App =
   Collections: {}
   Routers: {}
   Views: {}
-
-$ ->
-  $.get "/posts", (posts, textStatus, xhr) ->
-    window.router = new App.Routers.PostsRouter(posts: posts)
-    Backbone.history.start()

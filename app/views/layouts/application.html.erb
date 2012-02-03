@@ -63,6 +63,14 @@
       followers_count: "<%= current_user.followers_count %>",
       friends_count: "<%= current_user.friends_count %>"
     };
+    $(function() {
+      $.get("/posts", function(posts, textStatus, xhr) {
+        window.router = new App.Routers.PostsRouter({
+          posts: posts
+        });
+        return Backbone.history.start();
+      });
+    });
   </script>
 </body>
 </html>

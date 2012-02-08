@@ -2,6 +2,7 @@ Miracle::Application.routes.draw do
   root :to => 'home#index'
   
   resources :posts
+  resources :friendships, :only => [:create, :destroy]
   
   match '/auth/failure' => 'sessions#failure'
   match '/logout' => 'sessions#destroy', :as => :logout

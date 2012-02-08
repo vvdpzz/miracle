@@ -14,7 +14,39 @@
     </div>
     <div class="profile-card-actions">
       <div class="follow-btn-container">
+        <% if (is_self) { %>
         <a class="btn" href="/settings/profile">Edit your profile</a>
+        <% } else { %>
+        <!-- combo -->
+        <% var is_follow = is_following ? "following" : "not-following"; %>
+        <div class="follow-combo btn-group <%= is_follow %> including" data-user-id="<%= id %>" data-dropdown="true">
+          <a class="follow-btn btn">
+            <div class="follow-text action-text" data-user-id="<%= id %>">
+              <i class="follow"></i>
+              Follow
+            </div>
+            <div class="following-text action-text">
+              Following
+            </div>
+            <div class="unfollow-text action-text" data-user-id="<%= id %>">
+              Unfollow
+            </div>
+            <div class="block-text action-text">
+              Blocked
+            </div>
+            <div class="unblock-text action-text" data-user-id="<%= id %>">
+              Unblock
+            </div>
+            <div class="pending-text action-text">
+              Pending
+            </div>
+            <div class="cancel-req-text action-text" data-user-id="<%= id %>">
+              Cancel
+            </div>
+          </a>
+        </div>
+        <!-- end -->
+        <% } %>
       </div>
       <ul class="stats">
         <li><a href="/#!/<%= nickname %>"><strong><%= posts_count %></strong> Posts</a></li>

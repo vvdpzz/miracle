@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   # relations
   has_many :posts
   
+  has_many :followers, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :friends, :class_name => "Friendship", :foreign_key => "user_id"
+  
   # sphinx index
   define_index do
     indexes name, :sortable => true

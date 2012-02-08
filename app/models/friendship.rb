@@ -1,6 +1,6 @@
 class Friendship < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :friend, :class_name => "User"
+  belongs_to :user, :counter_cache => :friends_count
+  belongs_to :friend, :class_name => "User", :counter_cache => :followers_count
   
   after_create :add_to_denormalized_friends
   after_destroy :remove_from_denormalized_friends

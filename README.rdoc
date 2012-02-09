@@ -22,3 +22,9 @@ wget http://sphinxsearch.com/files/sphinx-2.0.3-release.tar.gz
 sudo make && sudo make install
 
 sudo ln -s /usr/local/mysql/lib/libmysqlclient.18.dylib /usr/lib/libmysqlclient.18.dylib
+
+rake ts:start
+rake ts:stop
+rake ts:restart
+rake ts:index
+rake ts:rebuild

@@ -1,7 +1,9 @@
 defaults: &defaults
-  bin_path: '/usr/local/sphinx/bin'
+  bin_path: '/usr/local/coreseek/bin'
   searchd_binary_name: searchd
   indexer_binary_name: indexer
+  charset_type: zh_cn.utf-8
+  charset_dictpath: /usr/local/mmseg3/etc/
 development:
   <<: *defaults
 test:

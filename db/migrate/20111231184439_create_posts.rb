@@ -17,6 +17,8 @@ class CreatePosts < ActiveRecord::Migration
       t.text     :entities
       
       t.datetime :created_at
+      
+      t.boolean  :delta, :default => true, :null => false
     end
     add_index :posts, :user_id
   end

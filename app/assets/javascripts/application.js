@@ -17,6 +17,7 @@
 //= require lib/backbone-datalink
 //= require lib/jquery-sensible-datetime
 //= require lib/jquery.placeholder.min
+//= require lib/bootstrap-dropdown
 //= require backbone/app
 $(function() {
  $('input, textarea').placeholder();

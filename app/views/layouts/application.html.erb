@@ -28,6 +28,45 @@
               </a>
             </li>
           </ul>
+          <div class="pull-right">
+            <div class="well topbar-tweet-btn">
+              <a class="btn btn-tweet" href="/#!/" data-component-term="new_post_button" original-title="Compose new Post">
+                <i class="nav-tweet"></i>
+              </a>
+            </div>
+            <i class="topbar-divider"></i>
+            <ul class="nav">
+              <!-- open -->
+              <li class="me dropdown session" data-global-action="t1me" id="user-dropdown">
+                <a class="dropdown-toggle" href="#" id="user-dropdown-toggle" data-toggle="dropdown">
+                  <span class="new-wrapper"><i class="nav-me"></i><i class="nav-new"></i></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li class="current-user" data-name="profile">
+                    <a href="/#!/<%= current_user.nickname %>" class="account-summary account-summary-small">
+                      <div class="content">
+                        <div class="account-group" data-user-id="<%= current_user.id %>" data-screen-name="<%= current_user.nickname %>">
+                          <img class="avatar size32" src="<%= current_user.avatar_url %>&s=32" alt="<%= current_user.name %>" data-user-id="<%= current_user.id %>">
+                          <b class="fullname"><%= current_user.name %></b>
+                          <small class="metadata">View my profile page</small>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a id="signout-button" href="/logout">Sign out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <i class="topbar-divider"></i>
+            <form class="form-search" action="/search" autocomplete="off" id="global-nav-search">
+              <span class="search-icon"><i class="nav-search"></i></span>
+              <input class="search-input" type="text" id="search-query" placeholder="Search" name="q">
+              <div class="dropdown-menu dropdown-menu-dark typeahead"></div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

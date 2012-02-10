@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   include Twitter::Extractor
+  include Twitter::Autolink
   include Redis::Objects
   
   # relations

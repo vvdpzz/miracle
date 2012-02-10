@@ -10,6 +10,7 @@ class App.Routers.PostsRouter extends Backbone.Router
     ".*"            : "index"
 
   index: ->
+    $("ul.nav li").removeClass("active")
     @view = new App.Views.Posts.IndexView(posts: @posts)
     $("#page-container").html(@view.render().el)
     $("ul.nav li.home").addClass("active")
@@ -22,6 +23,10 @@ class App.Routers.PostsRouter extends Backbone.Router
 
   showTag: (id) ->
     $("ul.nav li").removeClass("active")
-    # $.get "/tagged/#{id}", ()
+    $.get "/tagged/#{id}", (data, textStatus, xhr) ->
+      @taggedPosts = new App.Collections.PostsCollection()
+      @taggedPosts.reset data.posts
+      @view = new App.Views.Tags.ShowView(posts: @taggedPosts, tag: data.tag)
+      $("#page-container").html(@view.render().el)
     $("ul.nav li.topics").addClass("active")
     

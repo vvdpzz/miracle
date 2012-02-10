@@ -9,4 +9,9 @@ class Tag < ActiveRecord::Base
   define_index do
     indexes name
   end
+  
+  def tagged_timeline
+    # from, to = (page - 1) * 20, page * 20 - 1
+    Post.where(:id => self.cached_posts.members)
+  end
 end

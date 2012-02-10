@@ -1,2 +1,2 @@
 json.(post, :id, :in_reply_to_post_id, :in_reply_to_user_id, :user_id, :name, :nickname, :avatar_url, :geo_lat, :geo_long, :entities, :created_at)
-json.text post.auto_link(post.text, :username_url_base => "/#!/", :hashtag_url_base => "/tagged/")
+json.text post.auto_link(post.text, :username_url_base => "/#!/", :hashtag_url_base => "/#!/tagged/")

@@ -1,4 +1,6 @@
 BUGS
+use redis-set to hash and insert it into a list
+
 pagination wrong when current_user write post and insert it to my own timeline
 page load
                                                             [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]

@@ -4,14 +4,16 @@ class Tag < ActiveRecord::Base
   # redis objects
   set :cached_followers
   set :cached_posts
+  # cached_tagged_timeline
+  list :ctt
   
   # sphinx index
   define_index do
     indexes name
   end
   
-  def tagged_timeline
-    # from, to = (page - 1) * 20, page * 20 - 1
-    Post.where(:id => self.cached_posts.members)
+  def tagged_timeline page = 1
+    from, to = (page - 1) * 20, page * 20 - 1
+    Post.where(:id => self.ctt[from..to].to_a)
   end
 end

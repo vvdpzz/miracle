@@ -12,4 +12,8 @@ class PostsController < ApplicationController
     tag = Tag.find_by_name params[:id]
     @posts = tag.tagged_timeline if tag
   end
+  
+  def search
+    @posts = Post.search params[:q]
+  end
 end

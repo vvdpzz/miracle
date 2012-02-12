@@ -3,7 +3,7 @@ class Tag < ActiveRecord::Base
   
   # redis objects
   set :cached_followers
-  set :cached_posts
+  # set :cached_posts
   # cached_tagged_timeline
   list :ctt
   

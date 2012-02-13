@@ -4,6 +4,7 @@ class App.Routers.PostsRouter extends Backbone.Router
     @posts.reset options.posts
 
   routes:
+    "!/search/:q"   : "search"
     "!/:id"         : "showUser"
     "!/tagged/:id"  : "showTag"
     "!"             : "index"
@@ -29,4 +30,13 @@ class App.Routers.PostsRouter extends Backbone.Router
       @view = new App.Views.Tags.ShowView(posts: @taggedPosts, tag: data.tag)
       $("#page-container").html(@view.render().el)
     $("ul.nav li.topics").addClass("active")
+  
+  search: (q) ->
+    $("ul.nav li").removeClass("active")
+    $.get "/search/#{q}", (data, textStatus, xhr) ->
+      @resultPosts = new App.Collections.PostsCollection()
+      @resultPosts.reset data.posts
+      @view = new App.Views.Search.ShowView(posts: @resultPosts, q: data.q)
+      $("#page-container").html(@view.render().el)
+      
     

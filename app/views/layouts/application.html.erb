@@ -109,6 +109,13 @@
         });
         return Backbone.history.start();
       });
+      $("#search-query").bind("keydown",function(e){
+        if (e.keyCode === 13){
+          e.preventDefault();
+          window.router.navigate("!/search/"+$(this).val(), {trigger: true});
+          return false;
+        }
+      });
     });
   </script>
 </body>

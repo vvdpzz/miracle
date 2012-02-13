@@ -2,6 +2,7 @@ Miracle::Application.routes.draw do
   root :to => 'home#index'
   
   match '/tagged/:id' => "posts#tagged"
+  match '/search/:q'  => "posts#search"
   resources :posts
   resources :friendships, :only => [:create, :destroy]
   

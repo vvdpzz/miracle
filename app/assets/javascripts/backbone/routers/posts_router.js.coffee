@@ -34,9 +34,8 @@ class App.Routers.PostsRouter extends Backbone.Router
   search: (q) ->
     $("ul.nav li").removeClass("active")
     $.get "/search/#{q}", (data, textStatus, xhr) ->
+      $("#search-query").val("")
       @resultPosts = new App.Collections.PostsCollection()
       @resultPosts.reset data.posts
       @view = new App.Views.Search.ShowView(posts: @resultPosts, q: data.q)
       $("#page-container").html(@view.render().el)
-      
-    

@@ -15,6 +15,7 @@ class App.Views.Search.ShowView extends Backbone.View
     
   render: =>
     $(@el).html(@template(posts: @options.posts ))
-    @$(".stream-title").html("Search result for: #{@options.q}")
+    @$(".flex-table-input").val(@options.q)
+    @$(".stream-title").html("Posts")
     @addAll()
     return this

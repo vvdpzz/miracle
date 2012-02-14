@@ -30,3 +30,40 @@ rake ts:stop
 rake ts:restart
 rake ts:index
 rake ts:rebuild
+
+---
+# How to install coreseek in 5 mins
+---
+## Initialize environment
+    $ sudo bash
+    $ su -
+
+## Download libtool
+    wget http://mirrors.kernel.org/gnu/libtool/libtool-2.2.10.tar.gz
+    tar xzf libtool-2.2.10.tar.gz
+    cd libtool-2.2.10
+    ./configure --prefix=/usr/local
+    make && make install
+
+## Download coreseek
+    wget http://www.coreseek.cn/uploads/csft/4.0/coreseek-4.1-beta.tar.gz
+    tar xzf coreseek-4.1-beta.tar.gz
+
+## Install mmseg
+    cd coreseek-4.1-beta/mmseg-3.2.14/
+    ./bootstrap
+    ./configure --prefix=/usr/local/mmseg3
+    make && make install
+
+## Install coreseek
+    $ cd csft-4.1/
+    $ sh buildconf.sh
+    $ ./configure --prefix=/usr/local/coreseek  --without-unixodbc --with-mmseg --with-mmseg-includes=/usr/local/mmseg3/include/mmseg/ --with-mmseg-libs=/usr/local/mmseg3/lib/ --with-mysql --with-mysql-includes=/usr/local/mysql/include --with-mysql-libs=/usr/local/mysql/lib --enable-id64
+    $ make && make install
+
+## Test Search
+    $ cd testpack
+    $ cat var/test/test.xml    #此时应该正确显示中文
+    $ /usr/local/mmseg3/bin/mmseg -d /usr/local/mmseg3/etc var/test/test.xml
+    $ /usr/local/coreseek/bin/indexer -c etc/csft.conf --all
+    $ /usr/local/coreseek/bin/search -c etc/csft.conf 中国

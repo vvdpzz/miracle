@@ -2,6 +2,7 @@ App.Views.Tags ||= {}
 
 class App.Views.Tags.ShowView extends Backbone.View
   template: JST["backbone/templates/tags/show"]
+  tagTemplate: JST["backbone/templates/tags/description"]
   
   initialize: () ->
     @options.posts.bind('reset', @addAll)
@@ -14,7 +15,7 @@ class App.Views.Tags.ShowView extends Backbone.View
     @$("#stream-items").append(view.render().el)
     
   render: =>
-    $(@el).html(@template(posts: @options.posts ))
-    @$(".stream-title").html(@options.tag)
+    $(@el).html(@template(posts: @options.posts, tag: @options.tag ))
+    $(@el).append(@tagTemplate(tag: @options.tag))
     @addAll()
     return this

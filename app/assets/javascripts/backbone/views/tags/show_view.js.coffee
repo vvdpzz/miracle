@@ -15,7 +15,7 @@ class App.Views.Tags.ShowView extends Backbone.View
     @$("#stream-items").append(view.render().el)
     
   render: =>
-    $(@el).html(@template(posts: @options.posts, tag: @options.tag ))
+    $(@el).html(@template(posts: @options.posts))
     $(@el).append(@tagTemplate(tag: @options.tag))
     @addAll()
     return this

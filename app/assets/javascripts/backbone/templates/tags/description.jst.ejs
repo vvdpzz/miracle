@@ -1,13 +1,19 @@
 <div class="dashboard">
   <div class="module mini-profile component">
     <div class="flex-module profile-summary">
-      <a href="/#!/tagged/<%= tag %>" class="account-summary account-summary-small">
-          <div class="content">
-              <div class="account-group">
-                  <b class="fullname"><%= tag %></b>
-              </div>
-          </div>
-      </a>
+      <h2><%= tag.name %></h2>
+    </div>
+    <div>
+        <ul class="stats">
+            <li>
+                <a href="/#!/tagged/<%= tag.name %>" data-element-term="post_stats">
+                    <strong><%= tag.posts_count %></strong> posts</a>
+                </li>
+            <li>
+                <a href="/#!/tagged/followers" data-element-term="following_stats">
+                    <strong><%= tag.followers_count %></strong> following</a>
+            </li>
+        </ul>
     </div>
   </div>
 </div>

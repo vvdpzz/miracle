@@ -18,6 +18,8 @@
 //= require lib/jquery-sensible-datetime
 //= require lib/jquery.placeholder.min
 //= require lib/bootstrap-dropdown
+//= require lib/jquery.atwho
+//= require lib/jquery.caret
 //= require backbone/app
 $(function() {
  $('input, textarea').placeholder();

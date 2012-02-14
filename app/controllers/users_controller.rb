@@ -18,4 +18,8 @@ class UsersController < ApplicationController
     
     render :json => user.serializable_hash.merge(hash), status: :ok
   end
+  
+  def followings
+    @users = User.select('id, name, nickname').where(id: current_user.cached_followers.members)
+  end
 end

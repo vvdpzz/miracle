@@ -60,6 +60,10 @@ class App.Views.Posts.IndexView extends Backbone.View
     @$('time').sensible(option)
     @collection = this.options.posts
     @model = new @collection.model()
-    this.$("form").backboneLink(@model)
+    @$("form").backboneLink(@model)
+    @$("textarea").atWho
+      tpl: "<li id='${id}' data-insert='${nickname}'>${nickname} <small>${name}</small></li>"
+      data: App.followings
+      debug: false
     
     return this

@@ -1,6 +1,6 @@
 Miracle::Application.routes.draw do
   root :to => 'home#index'
-  
+
   match '/tagged/:id' => "posts#tagged"
   match '/search/:q'  => "posts#search"
   resources :posts
@@ -11,5 +11,9 @@ Miracle::Application.routes.draw do
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/login' => 'sessions#new', :as => :login
   match '/auth/:provider/callback' => 'sessions#create'
-  resources :users, :only => [ :show, :edit, :update ]
+  resources :users, :only => [ :show, :edit, :update ] do
+    collection do
+      get :followings
+    end
+  end
 end

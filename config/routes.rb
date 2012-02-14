@@ -5,6 +5,7 @@ Miracle::Application.routes.draw do
   match '/search/:q'  => "posts#search"
   resources :posts
   resources :friendships, :only => [:create, :destroy]
+  resources :tagships, :only => [:create, :destroy]
   
   match '/auth/failure' => 'sessions#failure'
   match '/logout' => 'sessions#destroy', :as => :logout

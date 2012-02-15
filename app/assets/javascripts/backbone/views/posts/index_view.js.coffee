@@ -61,9 +61,32 @@ class App.Views.Posts.IndexView extends Backbone.View
     @collection = this.options.posts
     @model = new @collection.model()
     @$("form").backboneLink(@model)
-    @$("textarea").atWho
-      tpl: "<li id='${id}' data-insert='${nickname}'>${nickname} <small>${name}</small></li>"
-      data: App.followings
-      debug: false
-    
+    @$("textarea.mention-at").mentionsInput
+      onDataRequest: (mode, query, callback) ->
+        data = [
+          id: 1
+          name: "Kenneth Auchenberg"
+          avatar: "http://cdn0.4dots.com/i/customavatars/avatar7112_1.gif"
+          type: "contact"
+        ]
+        data = _.filter(data, (item) ->
+          item.name.toLowerCase().indexOf(query.toLowerCase()) > -1
+        )
+        callback.call this, data
+      triggerChar: "@"
+      minChars: 0
+    @$("textarea.mention-sharp").mentionsInput
+      onDataRequest: (mode, query, callback) ->
+        data = [
+          id: 1
+          name: "Kenneth Auchenberg"
+          avatar: "http://cdn0.4dots.com/i/customavatars/avatar7112_1.gif"
+          type: "contact"
+        ]
+        data = _.filter(data, (item) ->
+          item.name.toLowerCase().indexOf(query.toLowerCase()) > -1
+        )
+        callback.call this, data
+      triggerChar: "#"
+      minChars: 1
     return this

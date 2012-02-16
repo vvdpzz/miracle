@@ -16,4 +16,8 @@ class Tag < ActiveRecord::Base
     from, to = (page - 1) * 20, page * 20 - 1
     Post.where(:id => self.ctt[from..to].to_a)
   end
+  
+  def tagged_follower
+    User.select("id, name, nickname, avatar_url, bio").where(:id => self.cached_followers.members)
+  end
 end

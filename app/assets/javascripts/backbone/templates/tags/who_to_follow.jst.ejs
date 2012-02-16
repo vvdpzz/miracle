@@ -1,0 +1,28 @@
+<div class="component" data-component-term="user_recommendations">
+  <div class="module">
+    <div class="flex-module">
+      <div class="flex-module-header">
+        <h3>Following - <%= users.length + (users.length === 1 ? " GitHubber" : " GitHubbers") %></h3>
+      </div>
+      <div class="flex-module-inner" data-section-id="wtf">
+        <% users.forEach(function(user){ %>
+          <div class="account-summary" data-user-id="<%= user.id %>">
+            <div class="content">
+              <a class="account-group user-thumb" href="/#!/<%= user.nickname %>" data-user-id="<%= user.id %>">
+                <img class="avatar" src="<%= user.avatar_url %>" alt="<%= user.name %>">
+                <span class="account-group-inner" data-user-id="<%= user.id %>">
+                  <b class="fullname"><%= user.name %></b>
+                  <s>@</s><%= user.nickname %>
+                </span>
+              </a>
+              <small class="metadata social-context"><%= user.bio %></small>
+              <span>
+                <a href="#" data-user-id="<%= user.id %>">Follow</a>
+              </span>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>

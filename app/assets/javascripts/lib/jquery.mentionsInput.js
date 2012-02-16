@@ -197,7 +197,7 @@
     function onInputBoxInput(e) {
       updateValues();
       updateMentionsCollection();
-      hideAutoComplete();
+      // hideAutoComplete();
 
       if (_.isArray(settings.triggerChar)) {
         _.each(settings.triggerChar, function (triggerChar) {

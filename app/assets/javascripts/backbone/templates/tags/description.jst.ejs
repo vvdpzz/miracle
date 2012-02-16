@@ -1,52 +1,50 @@
-<div class="dashboard">
-  <div class="module mini-profile component">
-    <div class="flex-module profile-summary">
-      <h2><%= tag.name %></h2>
-    </div>
-    <div>
-        <ul class="stats">
-            <li>
-                <a href="/#!/tagged/<%= tag.name %>" data-element-term="post_stats">
-                    <strong><%= tag.posts_count %></strong> posts</a>
-            </li>
-            <li>
-                <a href="/#!/tagged/followers" data-element-term="following_stats">
-                    <strong><%= tag.followers_count %></strong> following</a>
-            </li>
-        </ul>
-    </div>
-    <div class="tweet-box tweet-user">
-        <div class="tweet-box condensed">
-            <!-- combo -->
-            <% var is_follow = tag.is_following ? "following" : "not-following"; %>
-            <div class="follow-combo btn-group <%= is_follow %> including" data-dropdown="true">
-              <a class="follow-btn btn">
-                <div class="follow-text action-text" data-tag-id="<%= tag.id %>">
-                  <i class="follow"></i>
-                  Follow
-                </div>
-                <div class="following-text action-text">
-                  Following
-                </div>
-                <div class="unfollow-text action-text" data-tag-id="<%= tag.id %>">
-                  Unfollow
-                </div>
-                <div class="block-text action-text">
-                  Blocked
-                </div>
-                <div class="unblock-text action-text" data-tag-id="<%= tag.id %>">
-                  Unblock
-                </div>
-                <div class="pending-text action-text">
-                  Pending
-                </div>
-                <div class="cancel-req-text action-text" data-tag-id="<%= tag.id %>">
-                  Cancel
-                </div>
-              </a>
-            </div>
-            <!-- end -->
-        </div>
-    </div>
+<div class="module mini-profile component">
+  <div class="flex-module profile-summary">
+    <h2><%= tag.name %></h2>
+  </div>
+  <div>
+      <ul class="stats">
+          <li>
+              <a href="/#!/tagged/<%= tag.name %>" data-element-term="post_stats">
+                  <strong><%= tag.posts_count %></strong> posts</a>
+          </li>
+          <li>
+              <a href="/#!/tagged/followers" data-element-term="following_stats">
+                  <strong><%= tag.followers_count %></strong> following</a>
+          </li>
+      </ul>
+  </div>
+  <div class="tweet-box tweet-user">
+      <div class="tweet-box condensed">
+          <!-- combo -->
+          <% var is_follow = tag.is_following ? "following" : "not-following"; %>
+          <div class="follow-combo btn-group <%= is_follow %> including" data-dropdown="true">
+            <a class="follow-btn btn">
+              <div class="follow-text action-text" data-tag-id="<%= tag.id %>">
+                <i class="follow"></i>
+                Follow
+              </div>
+              <div class="following-text action-text">
+                Following
+              </div>
+              <div class="unfollow-text action-text" data-tag-id="<%= tag.id %>">
+                Unfollow
+              </div>
+              <div class="block-text action-text">
+                Blocked
+              </div>
+              <div class="unblock-text action-text" data-tag-id="<%= tag.id %>">
+                Unblock
+              </div>
+              <div class="pending-text action-text">
+                Pending
+              </div>
+              <div class="cancel-req-text action-text" data-tag-id="<%= tag.id %>">
+                Cancel
+              </div>
+            </a>
+          </div>
+          <!-- end -->
+      </div>
   </div>
 </div>

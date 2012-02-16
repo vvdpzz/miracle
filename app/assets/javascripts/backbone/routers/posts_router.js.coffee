@@ -27,7 +27,7 @@ class App.Routers.PostsRouter extends Backbone.Router
     $.get "/tagged/#{id}", (data, textStatus, xhr) ->
       @taggedPosts = new App.Collections.PostsCollection()
       @taggedPosts.reset data.posts
-      @view = new App.Views.Tags.ShowView(posts: @taggedPosts, tag: data.tag)
+      @view = new App.Views.Tags.ShowView(posts: @taggedPosts, tag: data.tag, users: data.users)
       $("#page-container").html(@view.render().el)
     $("ul.nav li.topics").addClass("active")
   

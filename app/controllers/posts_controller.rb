@@ -10,7 +10,10 @@ class PostsController < ApplicationController
   
   def tagged
     @tag = Tag.find_by_name params[:id]
-    @posts = @tag.tagged_timeline if @tag
+    if @tag
+      @posts = @tag.tagged_timeline
+      @users = @tag.tagged_follower
+    end
   end
   
   def search

@@ -3,6 +3,7 @@ App.Views.Tags ||= {}
 class App.Views.Tags.ShowView extends Backbone.View
   template: JST["backbone/templates/tags/show"]
   tagTemplate: JST["backbone/templates/tags/description"]
+  wtfTemplate: JST["backbone/templates/tags/who_to_follow"]
   
   events:
     "click .follow-text": "followTag"
@@ -20,7 +21,8 @@ class App.Views.Tags.ShowView extends Backbone.View
     
   render: =>
     $(@el).html(@template(posts: @options.posts))
-    $(@el).append(@tagTemplate(tag: @options.tag))
+    $(@el).find(".dashboard").append(@tagTemplate(tag: @options.tag))
+    $(@el).find(".dashboard").append(@wtfTemplate(users: @options.users))
     @addAll()
     return this
   

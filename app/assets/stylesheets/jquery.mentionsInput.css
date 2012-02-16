@@ -87,8 +87,9 @@
 }
 
 .text-area-editor .mentions-autocomplete-list li b {
-  background: #ffff99;
-  font-weight: normal;
+/*  background: #000;*/
+  font-weight: bold;
+  color:#000;
 }
 
 .text-area-editor .mentions {

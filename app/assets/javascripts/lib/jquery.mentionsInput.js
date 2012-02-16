@@ -56,6 +56,9 @@
           domNode.focus();
         }
       }
+    },
+    rtrim: function(string) {
+      return string.replace(/\s+$/,"");
     }
   };
 
@@ -197,7 +200,8 @@
     function onInputBoxInput(e) {
       updateValues();
       updateMentionsCollection();
-      // hideAutoComplete();
+      if (inputBuffer.length == 0)
+        hideAutoComplete();
 
       if (_.isArray(settings.triggerChar)) {
         _.each(settings.triggerChar, function (triggerChar) {

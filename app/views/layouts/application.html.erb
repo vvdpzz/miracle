@@ -109,10 +109,9 @@
         });
         return Backbone.history.start();
       });
-      $.get("/users/followings.json", function(users, textStatus, xhr) {
-        App.followings = $.map(users, function(value, index) {
-          return {'id': value.id, 'name': value.name, 'nickname': value.nickname};
-        });
+      $.get("/users/mentions.json", function(data, textStatus, xhr) {
+        App.followings = data.followings;
+        App.hashtags = data.tags;
       });
       $("#search-query").bind("keydown",function(e){
         if (e.keyCode === 13){

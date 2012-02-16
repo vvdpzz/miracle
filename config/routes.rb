@@ -13,7 +13,7 @@ Miracle::Application.routes.draw do
   match '/auth/:provider/callback' => 'sessions#create'
   resources :users, :only => [ :show, :edit, :update ] do
     collection do
-      get :followings
+      get :mentions
     end
   end
 end

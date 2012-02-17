@@ -7,7 +7,7 @@ class App.Views.Posts.PostView extends Backbone.View
     "click .destroy" : "destroy"
 
   tagName: "div"
-  className: "stream-item"
+  className: "stream-item expanding-stream-item"
 
   destroy: () ->
     @model.destroy()

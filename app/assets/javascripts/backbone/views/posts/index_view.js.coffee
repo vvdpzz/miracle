@@ -7,10 +7,19 @@ class App.Views.Posts.IndexView extends Backbone.View
     "click textarea": "rmCondensed"
     "blur textarea": "addCondensed"
     "keyup textarea": "toggleButton"
-
+    "click .expanding-stream-item": "expandingStreamItem"
+    "click .open-tweet": "expandingStreamItem"
+    "click .close-tweet": "expandingStreamItem"
+    
   initialize: () ->
     @options.posts.bind('reset', @addAll)
-    
+  
+  expandingStreamItem: (e) ->
+    if $(e.currentTarget).hasClass("open")
+      $(e.currentTarget).css("margin", "0 0").removeClass("open").prev().removeClass("before-expanded").end().next().removeClass("after-expanded")
+    else
+      $(e.currentTarget).css("margin", "8px 0").addClass("open").prev().addClass("before-expanded").end().next().addClass("after-expanded")
+  
   rmCondensed: ->
     @$("form").closest(".tweet-box").removeClass("condensed")
   

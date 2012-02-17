@@ -36,6 +36,5 @@ class App.Views.Posts.ReplyView extends Backbone.View
   render: ->
     $(@el).html(@template({nickname: @options.nickname, avatar: @options.avatar, content: @options.content}))
     $(@el).css({top: "0px", width: "500px", height: "auto", visibility: "visible", display: "block"})
-    $(@el).find(".twitter-anywhere-tweet-box-editor").focus().val("@#{@options.nickname} ")
     $("body").append('<div class="twttr-dialog-overlay" style="display: block; "></div>')
     return this

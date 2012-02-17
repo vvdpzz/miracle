@@ -25,6 +25,7 @@ class App.Views.Posts.IndexView extends Backbone.View
     
     view = new App.Views.Posts.ReplyView({postId: postId, nickname: nickname, avatar: avatar, content: content})
     $(".twttr-dialog-wrapper").html(view.render().el).show()
+    $(".twitter-anywhere-tweet-box-editor").focus().val("@#{nickname} ")
   
   expandingStreamItem: (e) ->
     e.preventDefault()

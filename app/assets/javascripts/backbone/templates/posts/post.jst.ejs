@@ -1,8 +1,8 @@
 <div class="expansion-container">
   <% if(user_id != App.current_user.id){ %>
-  <div class="tweet original-tweet colored-actions colored-links">
+  <div class="tweet original-tweet colored-actions colored-links js-actionable-tweet">
   <% }else{ %>
-  <div class="tweet original-tweet my-tweet colored-actions colored-links">
+  <div class="tweet original-tweet my-tweet colored-actions colored-links js-actionable-tweet">
   <% } %>
     <div class="content">
       <div class="stream-item-header">
@@ -16,7 +16,7 @@
         </small>
         <ul class="actions">
           <li class="action-reply-container">
-            <a class="with-icn" data-modal="tweet-reply" href="#" title="Reply">
+            <a class="with-icn js-action-reply" data-modal="tweet-reply" href="#" title="Reply">
               <i class="action-reply"></i>
               <b>Reply</b>
             </a>

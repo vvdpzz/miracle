@@ -30,6 +30,7 @@ class Post < ActiveRecord::Base
       self.name = self.user.name
       self.nickname = self.user.nickname
       self.avatar_url = self.user.avatar_url
+      self.in_reply_to_user_id = self.user_id if self.in_reply_to_post_id
     end
 
     def asyncs

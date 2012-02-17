@@ -2,17 +2,29 @@ App.Views.Posts ||= {}
 
 class App.Views.Posts.IndexView extends Backbone.View
   template: JST["backbone/templates/posts/index"]
+  
   events:
     "submit #new-tweet": "save"
     "click textarea": "rmCondensed"
     "blur textarea": "addCondensed"
     "keyup textarea": "toggleButton"
-    "click .expanding-stream-item": "expandingStreamItem"
-    "click .open-tweet": "expandingStreamItem"
-    "click .close-tweet": "expandingStreamItem"
+    "click .expanding-stream-item, .open-tweet, .close-tweet": "expandingStreamItem"
+    "click .js-action-reply": "replyAction"
     
   initialize: () ->
     @options.posts.bind('reset', @addAll)
+    
+  replyAction: (e)->
+    e.preventDefault()
+    e.stopPropagation()
+    item = $(e.currentTarget).parents(".stream-item-header")
+    nickname = item.find("span.username b").text()
+    avatar = item.find("img.avatar").attr("src")
+    content = item.siblings(".tweet-text").text()
+    postId = $(e.currentTarget).parents(".stream-item").data("post-id")
+    
+    view = new App.Views.Posts.ReplyView({postId: postId, nickname: nickname, avatar: avatar, content: content})
+    $(".twttr-dialog-wrapper").html(view.render().el).show()
   
   expandingStreamItem: (e) ->
     e.preventDefault()

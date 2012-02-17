@@ -1,0 +1,38 @@
+<div class="twttr-dialog" data-component-term="reply_dialog" type="reply">
+  <div class="twttr-dialog-header js-twttr-dialog-draggable">
+    <h3>Reply to @<strong><%= nickname %></strong></h3> 
+    <div class="twttr-dialog-close"><b>×</b></div>
+  </div>
+  <div class="twttr-dialog-inside">
+    <div class="twttr-dialog-error clearfix"></div>
+    <div class="twttr-dialog-body clearfix">
+      <div class="twttr-dialog-content">
+
+        <div class="tweet-box">
+          <div class="tweet-box-title">
+            <h2>Reply to @<%= nickname %></h2>
+          </div>
+          <div class="text-area">
+            <div class="text-area-editor twttr-editor">
+              <textarea class="twitter-anywhere-tweet-box-editor" style="width: 452px; height: 56px; " dir="ltr"></textarea>
+            </div>
+          </div>
+          <div class="tweet-button-container">
+            <div class="tweet-button-sub-container">
+              <img src="/assets/spinner.gif" class="tweet-spinner" style="display: none;">
+              <span class="tweetbox-counter-tipsy" style="opacity: 0; "></span>
+              <input class="tweet-counter" value="140" disabled="disabled">
+              <a href="#" class="tweet-button btn disabled">Post</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="twttr-dialog-footer clearfix">
+      <div class="tweet twttr-dialog-reply-footer colored-links">
+        <img src="<%= avatar %>" title="<%= nickname %>">
+        <p><span class="twttr-reply-screenname"><%= nickname %></span><%= content %></p>
+      </div>
+    </div>
+  </div>
+</div>

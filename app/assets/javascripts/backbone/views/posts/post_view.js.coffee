@@ -17,4 +17,5 @@ class App.Views.Posts.PostView extends Backbone.View
 
   render: ->
     $(@el).html(@template(@model.toJSON() ))
+    $(@el).attr("data-post-id", @model.toJSON().id)
     return this

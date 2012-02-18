@@ -19,6 +19,7 @@
 //= require lib/jquery.placeholder.min
 //= require lib/bootstrap-dropdown
 //= require lib/jquery.mentionsInput
+//= require lib/waypoints.min
 //= require backbone/app
 $(function() {
  $('input, textarea').placeholder();

@@ -25,13 +25,25 @@ class App.Views.Posts.ReplyView extends Backbone.View
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    $.post "/posts",
-      post:
-        text: $(@el).find(".twitter-anywhere-tweet-box-editor").val()
-        in_reply_to_post_id: @options.postId
-    , (data) ->
-      $(".twttr-dialog-overlay").remove()
-      $(".twttr-dialog-wrapper").empty().hide()
+    @collection = @options.posts
+    @model = new App.Models.Post(
+      text: $(@el).find(".twitter-anywhere-tweet-box-editor").val()
+      in_reply_to_post_id: @options.postId
+    )
+    @collection.create(@model.toJSON(),
+      success: (post) =>
+        @addOneToHead(post)
+        $(".twttr-dialog-overlay").remove()
+        $(".twttr-dialog-wrapper").empty().hide()
+
+      error: (post, jqXHR) =>
+        @model.set({errors: $.parseJSON(jqXHR.responseText)})
+    )
+  
+  addOneToHead: (post) =>
+    view = new App.Views.Posts.PostView({model : post})
+    $("#stream-items").prepend(view.render().el)
+    $('time').sensible(option)
     
   render: ->
     $(@el).html(@template({nickname: @options.nickname, avatar: @options.avatar, content: @options.content}))

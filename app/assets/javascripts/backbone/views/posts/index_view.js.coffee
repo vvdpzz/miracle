@@ -18,12 +18,14 @@ class App.Views.Posts.IndexView extends Backbone.View
     e.preventDefault()
     e.stopPropagation()
     item = $(e.currentTarget).parents(".stream-item-header")
+    if item.length == 0
+      item = $(e.currentTarget).parents(".js-tweet-details-dropdown").siblings(".stream-item-header")
     nickname = item.find("span.username b").text()
     avatar = item.find("img.avatar").attr("src")
     content = item.siblings(".tweet-text").text()
     postId = $(e.currentTarget).parents(".stream-item").data("post-id")
     
-    view = new App.Views.Posts.ReplyView({postId: postId, nickname: nickname, avatar: avatar, content: content})
+    view = new App.Views.Posts.ReplyView({posts: this.options.posts, postId: postId, nickname: nickname, avatar: avatar, content: content})
     $(".twttr-dialog-wrapper").html(view.render().el).show()
     $(".twttr-dialog-wrapper .twitter-anywhere-tweet-box-editor").focus().val("@#{nickname} ")
   

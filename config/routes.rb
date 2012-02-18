@@ -3,7 +3,11 @@ Miracle::Application.routes.draw do
 
   match '/tagged/:id' => "posts#tagged"
   match '/search/:q'  => "posts#search"
-  resources :posts
+  resources :posts do
+    member do
+      get :replies
+    end
+  end
   resources :friendships, :only => [:create, :destroy]
   resources :tagships, :only => [:create, :destroy]
   

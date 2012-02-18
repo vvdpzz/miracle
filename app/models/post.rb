@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
   # callbacks
   before_create :set_user_properties
   after_create :asyncs
+  after_create :cache_replies
   
   # sphinx index
   define_index do
@@ -24,6 +25,11 @@ class Post < ActiveRecord::Base
   
   # redis objects
   set :cached_tags
+  list :cached_replies
+  
+  def replies
+    Post.where(id: self.cached_replies.values)
+  end
   
   protected
     def set_user_properties
@@ -36,5 +42,9 @@ class Post < ActiveRecord::Base
     def asyncs
       Resque.enqueue(ExtractTag, self.id)
       Resque.enqueue(NewPost, self.id)
+    end
+    
+    def cache_replies
+      $redis.rpush("post:#{self.in_reply_to_post_id}:cached_replies", self.id) if self.in_reply_to_post_id
     end
 end

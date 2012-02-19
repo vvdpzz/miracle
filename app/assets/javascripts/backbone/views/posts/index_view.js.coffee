@@ -2,6 +2,7 @@ App.Views.Posts ||= {}
 
 class App.Views.Posts.IndexView extends Backbone.View
   template: JST["backbone/templates/posts/index"]
+  convTemplate: JST["backbone/templates/posts/conversation"]
   
   events:
     "submit #new-tweet": "save"
@@ -32,12 +33,21 @@ class App.Views.Posts.IndexView extends Backbone.View
   expandingStreamItem: (e) ->
     e.preventDefault()
     if $(e.currentTarget).hasClass("open")
+      $(e.currentTarget).find(".original-tweet").removeClass("opened-tweet")
       $(e.currentTarget).css("margin", "0 0").removeClass("open").prev().removeClass("before-expanded").end().next().removeClass("after-expanded")
     else
+      $(e.currentTarget).find(".original-tweet").addClass("opened-tweet")
       if $(e.currentTarget).prev().length != 0
         $(e.currentTarget).css("margin", "8px 0").addClass("open").prev().addClass("before-expanded").end().next().addClass("after-expanded")
       else
         $(e.currentTarget).css("margin-bottom", "8px").addClass("open").next().addClass("after-expanded")
+      if not $(e.target).hasClass("close-tweet")
+        postId = $(e.currentTarget).data("post-id")
+        if postId != undefined
+          that = this
+          $.get "/posts/#{postId}/replies.json", (posts) ->
+            if posts.length > 0
+              $(e.currentTarget).find(".expansion-container").append(that.convTemplate({posts: posts}))
   
   rmCondensed: ->
     @$("form").closest(".tweet-box").removeClass("condensed")

@@ -11,10 +11,14 @@ class App.Views.Posts.IndexView extends Backbone.View
     "keyup textarea": "toggleButton"
     "click .expanding-stream-item, .open-tweet, .close-tweet": "expandingStreamItem"
     "click .js-action-reply": "replyAction"
+    "click .tweet-url": "openTweetUrl"
     
   initialize: () ->
     @options.posts.bind('reset', @addAll)
-    
+  
+  openTweetUrl: (e)->
+    e.stopPropagation()
+  
   replyAction: (e)->
     e.preventDefault()
     e.stopPropagation()

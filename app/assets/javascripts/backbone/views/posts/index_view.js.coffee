@@ -52,6 +52,7 @@ class App.Views.Posts.IndexView extends Backbone.View
           $.get "/posts/#{postId}/replies.json", (posts) ->
             if posts.length > 0
               $(e.currentTarget).find(".expansion-container").append(that.convTemplate({posts: posts}))
+              $('time').sensible(option)
   
   rmCondensed: ->
     @$("form").closest(".tweet-box").removeClass("condensed")
@@ -95,6 +96,22 @@ class App.Views.Posts.IndexView extends Backbone.View
     view = new App.Views.Posts.PostView({model : post})
     @$("#stream-items").prepend(view.render().el)
     @$('time').sensible(option)
+    
+  fetchPage: (page)->
+    console.log "fetch #{page}"
+    that = this
+    @collection = @options.posts.fetch(
+      data:
+        page: page,
+      success: (collection, response) =>
+        len = collection.length
+        if len < 20 or len == 0
+          that.$(".stream-end-inner").remove()
+        else
+          that.$(".stream-end-inner").empty()
+          collection.each(that.addOne)
+          that.$('time').sensible(option)
+    )
 
   render: =>
     $(@el).html(@template(posts: @options.posts.toJSON() ))
@@ -115,4 +132,14 @@ class App.Views.Posts.IndexView extends Backbone.View
           item.name.toLowerCase().indexOf(query.toLowerCase()) > -1
         )
         callback.call this, data
+    that = this
+    @$(".stream-end-inner").data("page", 1)
+    opts = offset: "80%"
+    @$(".stream-end-inner").waypoint ((e, direction)->
+      console.log direction
+      if direction is "down"
+        page = ++that.$(".stream-end-inner").data().page
+        that.$(".stream-end-inner").html('<span class="spinner" title="Loading..."></span>')
+        that.fetchPage(page)
+    ), opts
     return this

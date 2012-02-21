@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_user.home_timeline
+    @posts = current_user.home_timeline params[:page]
   end
   
   def create

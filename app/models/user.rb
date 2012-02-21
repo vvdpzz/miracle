@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
     end
   end
   
-  def home_timeline(page = 1)
+  def home_timeline page = 1
+    page = page || 1
+    page = page.to_i
     self.cached_offset.reset if page == 1
     offset = self.cached_offset.value
     from, to = (page - 1) * 20 + offset, (page * 20) + offset - 1

@@ -8,7 +8,7 @@
           <div class="content">
             <div class="stream-item-header">
               <small class="time">
-                <a href="/#!/<%= post.nickname %>/posts/<%= post.id %>" class="tweet-timestamp js-permalink" title="<%= post.created_at %>"><span class="_timestamp"></span></a>
+                <a href="/#!/<%= post.nickname %>/posts/<%= post.id %>" class="tweet-timestamp" title="<%= post.created_at %>"><time class="datetime" datetime="<%= post.created_at %>"></time></a>
               </small>
               <a class="account-group" href="/#!/<%= post.nickname %>" data-user-id="<%= post.id %>">
                 <img class="avatar" src="<%= post.avatar_url %>" alt="<%= post.name %>">

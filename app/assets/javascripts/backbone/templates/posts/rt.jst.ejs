@@ -1,0 +1,75 @@
+<div class="in-reply-to js-tweet-ancestors" data-component-term="conversation" style="height: auto; ">
+  <div>
+    <div class="simple-tweet tweet js-stream-tweet js-hover js-actionable-tweet js-profile-popup-actionable   sticky-actions colored-links" data-tweet-id="<%= post.id %>" data-item-id="<%= post.id %>" data-screen-name="<%= post.nickname %>" data-user-id="<%= post.user_id %>" data-is-reply-to="true">
+      <i class="dogear"></i>
+      <div class="content">
+        <div class="stream-item-header">
+          <small class="time">
+            <a href="/#!/<%= post.nickname %>/posts/<%= post.id %>" class="tweet-timestamp js-permalink" title="<%= post.created_at %>"><time class="datetime" datetime="<%= post.created_at %>"></time></a>
+          </small>
+          <a class="account-group js-account-group js-action-profile js-user-profile-link" href="/#!/<%= post.nickname %>" data-user-id="<%= post.user_id %>">
+            <img class="avatar js-action-profile-avatar" src="<%= post.avatar_url %>" alt="<%= post.name %>">
+            <strong class="fullname js-action-profile-name"><%= post.name %></strong>
+            <span class="username js-action-profile-name"><s>@</s><b><%= post.nickname %></b></span>
+          </a>
+          <ul class="actions js-actions">
+            <li class="action-reply-container">
+              <a class="with-icn js-action-reply" data-modal="tweet-reply" href="#" title="Reply">
+                <i class="action-reply"></i>
+                <b>Reply</b>
+              </a>
+            </li>
+            <li class="action-rt-container">
+              <a class="with-icn js-toggle-rt" data-modal="tweet-retweet" href="#">
+                <i class="action-rt"></i>
+
+                <b><span class="undo-retweet" title="Undo retweet">Retweeted</span><span class="retweet" title="Retweet">Retweet</span></b>
+              </a>
+            </li>
+            <li class="action-del-container">
+              <a class="with-icn js-action-del" href="#" title="Delete">
+                <i class="action-del"></i>
+                <b>Delete</b>
+              </a>
+            </li>
+            <li class="action-fav-container">
+              <a class="with-icn js-toggle-fav" href="#">
+                <i class="action-fav"></i>
+
+                <b><span class="unfavorite" title="Undo favorite">Favorited</span><span class="favorite" title="Favorite">Favorite</span></b>
+              </a>
+            </li>
+            <li class="action-open-container">
+              <span class="separator">·</span>
+              <a class="with-icn js-open-close-tweet" href="/#!/<%= post.nickname %>/posts/<%= post.id %>">
+                <span class="close-tweet" title="Close Tweet"> Close</span>
+                <span class="open-tweet" title="Open Tweet"> Open</span>
+                <span class="details-tweet" title="View Tweet details"> Details</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <p class="js-tweet-text"><%= post.text %></p>
+        <div class="stream-item-footer">
+          <div class="context">
+          </div>
+          <a class="details with-icn js-details" href="#">
+            <span class="js-icon-container">
+            </span>
+            <b>
+              <span class="view-open js-view-details">
+              </span>
+              <span class="hide-open js-hide-details">
+              </span>
+            </b>
+          </a>
+        </div>
+        <div class="expanded-content js-tweet-details-dropdown"></div>
+      </div>
+    </div>
+  </div>
+  <div class="content-divider">
+    <div class="inner-carrot"></div>
+    <div class="outer-carrot"></div>
+  </div>
+</div>

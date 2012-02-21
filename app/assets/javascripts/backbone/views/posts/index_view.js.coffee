@@ -3,6 +3,7 @@ App.Views.Posts ||= {}
 class App.Views.Posts.IndexView extends Backbone.View
   template: JST["backbone/templates/posts/index"]
   convTemplate: JST["backbone/templates/posts/conversation"]
+  rtTemplate: JST["backbone/templates/posts/rt"]
   
   events:
     "submit #new-tweet": "save"
@@ -50,8 +51,11 @@ class App.Views.Posts.IndexView extends Backbone.View
         if postId != undefined
           that = this
           $.get "/posts/#{postId}/replies.json", (posts) ->
-            if posts.length > 0
-              $(e.currentTarget).find(".expansion-container").append(that.convTemplate({posts: posts}))
+            if posts.replies.length > 0
+              $(e.currentTarget).find(".expansion-container").append(that.convTemplate({posts: posts.replies}))
+              $('time').sensible(option)
+            if posts.rt
+              $(e.currentTarget).find(".expansion-container").prepend(that.rtTemplate({post: posts.rt}))
               $('time').sensible(option)
   
   rmCondensed: ->

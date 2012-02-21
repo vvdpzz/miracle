@@ -9,8 +9,11 @@ class PostsController < ApplicationController
   end
   
   def replies
-    post = Post.select("id").find_by_id params[:id]
-    @posts = post.replies if post
+    post = Post.select("id, in_reply_to_post_id").find_by_id params[:id]
+    if post
+      @posts = post.replies
+      @post = Post.find_by_id post.in_reply_to_post_id
+    end
   end
   
   def tagged
